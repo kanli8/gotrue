@@ -107,6 +107,24 @@ func NewAPIWithVersion(ctx context.Context, globalConfig *conf.GlobalConfigurati
 
 		r.With(sharedLimiter).With(api.verifyCaptcha).Post("/otp", api.Otp)
 
+		//WeChat Applet
+		r.With(sharedLimiter).Post("/wechatAppletSignUp", api.WeChatAppletSignup)
+		r.With(api.limitHandler(
+			// Allow requests at the specified rate per 5 minutes.
+			tollbooth.NewLimiter(api.config.RateLimitTokenRefresh/(60*5), &limiter.ExpirableOptions{
+				DefaultExpirationTTL: time.Hour,
+			}).SetBurst(30),
+		)).Post("/wechatAppletToken", api.WechatAppletToken)
+
+		//Phone one click
+		r.With(sharedLimiter).Post("/phoneOneClickSignUp", api.PhoneOneClickSignup)
+		r.With(api.limitHandler(
+			// Allow requests at the specified rate per 5 minutes.
+			tollbooth.NewLimiter(api.config.RateLimitTokenRefresh/(60*5), &limiter.ExpirableOptions{
+				DefaultExpirationTTL: time.Hour,
+			}).SetBurst(30),
+		)).Post("/phoneOneClickToken", api.PhoneOneClickToken)
+
 		r.With(api.limitHandler(
 			// Allow requests at the specified rate per 5 minutes.
 			tollbooth.NewLimiter(api.config.RateLimitTokenRefresh/(60*5), &limiter.ExpirableOptions{

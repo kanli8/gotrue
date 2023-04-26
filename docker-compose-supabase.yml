@@ -1,0 +1,26 @@
+version: "3.9"
+services:
+  gotrue:
+    container_name: supabse-gotrue
+    restart: unless-stopped
+    build:
+      context: ./
+      dockerfile: Dockerfile.dev
+    ports:
+      - '9999:9999'
+      - '9100:9100'
+    environment:
+      - TZ=Asia/Shanghai
+      - GOTRUE_DB_MIGRATIONS_PATH=/go/src/github.com/supabase/gotrue/migrations
+    volumes:
+      - ./:/go/src/github.com/supabase/gotrue
+    command: CompileDaemon --build="make build" --directory=/go/src/github.com/supabase/gotrue --recursive=true -pattern="(.+\.go|.+\.env)" -exclude=gotrue -exclude=gotrue-arm64 -exclude=.env --command="/go/src/github.com/supabase/gotrue/gotrue -c=.env.docker"
+    networks:
+      supabase:
+        aliases:
+          - auth
+
+
+networks:
+  supabase:
+    external: true

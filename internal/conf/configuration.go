@@ -136,29 +136,32 @@ type EmailContentConfiguration struct {
 }
 
 type ProviderConfiguration struct {
-	Apple                   OAuthProviderConfiguration `json:"apple"`
-	Azure                   OAuthProviderConfiguration `json:"azure"`
-	Bitbucket               OAuthProviderConfiguration `json:"bitbucket"`
-	Discord                 OAuthProviderConfiguration `json:"discord"`
-	Facebook                OAuthProviderConfiguration `json:"facebook"`
-	Github                  OAuthProviderConfiguration `json:"github"`
-	Gitlab                  OAuthProviderConfiguration `json:"gitlab"`
-	Google                  OAuthProviderConfiguration `json:"google"`
-	Notion                  OAuthProviderConfiguration `json:"notion"`
-	Keycloak                OAuthProviderConfiguration `json:"keycloak"`
-	Linkedin                OAuthProviderConfiguration `json:"linkedin"`
-	Spotify                 OAuthProviderConfiguration `json:"spotify"`
-	Slack                   OAuthProviderConfiguration `json:"slack"`
-	Twitter                 OAuthProviderConfiguration `json:"twitter"`
-	Twitch                  OAuthProviderConfiguration `json:"twitch"`
-	WorkOS                  OAuthProviderConfiguration `json:"workos"`
-	Email                   EmailProviderConfiguration `json:"email"`
-	Phone                   PhoneProviderConfiguration `json:"phone"`
-	Zoom                    OAuthProviderConfiguration `json:"zoom"`
-	IosBundleId             string                     `json:"ios_bundle_id" split_words:"true"`
-	RedirectURL             string                     `json:"redirect_url"`
-	AllowedIdTokenIssuers   []string                   `json:"allowed_id_token_issuers" split_words:"true"`
-	FlowStateExpiryDuration time.Duration              `json:"flow_state_expiry_duration" split_words:"true"`
+	Apple                            OAuthProviderConfiguration `json:"apple"`
+	Azure                            OAuthProviderConfiguration `json:"azure"`
+	Bitbucket                        OAuthProviderConfiguration `json:"bitbucket"`
+	Discord                          OAuthProviderConfiguration `json:"discord"`
+	Facebook                         OAuthProviderConfiguration `json:"facebook"`
+	Github                           OAuthProviderConfiguration `json:"github"`
+	Gitlab                           OAuthProviderConfiguration `json:"gitlab"`
+	Google                           OAuthProviderConfiguration `json:"google"`
+	Notion                           OAuthProviderConfiguration `json:"notion"`
+	Keycloak                         OAuthProviderConfiguration `json:"keycloak"`
+	Linkedin                         OAuthProviderConfiguration `json:"linkedin"`
+	Spotify                          OAuthProviderConfiguration `json:"spotify"`
+	Slack                            OAuthProviderConfiguration `json:"slack"`
+	Twitter                          OAuthProviderConfiguration `json:"twitter"`
+	Twitch                           OAuthProviderConfiguration `json:"twitch"`
+	WorkOS                           OAuthProviderConfiguration `json:"workos"`
+	Email                            EmailProviderConfiguration `json:"email"`
+	Phone                            PhoneProviderConfiguration `json:"phone"`
+	Zoom                             OAuthProviderConfiguration `json:"zoom"`
+	IosBundleId                      string                     `json:"ios_bundle_id" split_words:"true"`
+	RedirectURL                      string                     `json:"redirect_url"`
+	AllowedIdTokenIssuers            []string                   `json:"allowed_id_token_issuers" split_words:"true"`
+	FlowStateExpiryDuration          time.Duration              `json:"flow_state_expiry_duration" split_words:"true"`
+	WechatAppletAppId                string                     `json:"wechat_applet_app_id" split_words:"true"`
+	WechatAppletAppSecret            string                     `json:"wechat_applet_app_secret" split_words:"true"`
+	UnicloudPhoneOneClickFunctionUrl string                     `json:"unicloud_phone_one_click_function_url" split_words:"true"`
 }
 
 type SMTPConfiguration struct {
