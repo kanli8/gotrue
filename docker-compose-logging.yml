@@ -1,0 +1,15 @@
+# Usage
+#   Start:          docker compose -f docker-compose.yml -f docker-compose-logging.yml up
+#   With helpers:   docker compose -f docker-compose.yml -f ./dev/docker-compose.dev.yml -f docker-compose-logging.yml up
+#   Stop:           docker compose down
+#   Destroy:        docker compose -f docker-compose.yml -f ./dev/docker-compose.dev.yml -f docker-compose-logging.yml down -v --remove-orphans
+# Please refer to https://supabase.com/docs/reference/self-hosting-analytics/introduction
+version: "3.8"
+
+services:
+  auth:
+    logging:
+      driver: syslog
+      options:
+        syslog-address: "tcp://localhost:${VECTOR_PORT}"
+        tag: auth
