@@ -7,7 +7,7 @@
 version: "3.8"
 
 services:
-  auth:
+  gotrue:
     logging:
       driver: syslog
       options:
